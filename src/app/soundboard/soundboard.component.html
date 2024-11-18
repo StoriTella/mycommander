@@ -1,11 +1,20 @@
-<button mat-flat-button routerLink="/homepage">Back</button>
-<button (click)="stop()">Stop</button>
+<button class="config-button" mat-flat-button routerLink="/homepage">Back</button>
+<button class="config-button" (click)="stop()">Stop</button>
+<button class="config-button" (click)="resetAll()">Reset</button>
 <div class="soundboard">
-    <button
-      *ngFor="let sound of soundEffects"
-      class="sound-button"
-      (click)="playSound(sound.key)"
-    >
-      {{ sound.label }}
-    </button>
-  </div>
+    <div *ngFor="let soundEffect of soundEffects">
+      <button class="sound-button" (click)="playSound(soundEffect.key)">
+        {{ soundEffect.label }}
+      </button>
+  
+      <!-- List of available sounds under the corresponding button -->
+      <ul>
+        <li *ngFor="let sound of sounds[soundEffect.key]; let i = index">
+            <div class="mp3">
+                {{ sound.src.split('/').pop() }}
+                <button (click)="playSpecificSound(soundEffect.key, i)">Play</button>
+            </div>
+        </li>
+      </ul>
+    </div>
+</div>

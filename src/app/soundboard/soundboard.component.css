@@ -5,6 +5,8 @@
   }
   
   .sound-button {
+    width: 300px;
+    height: 200px;
     padding: 10px 20px;
     font-size: 16px;
     border: none;
@@ -13,9 +15,33 @@
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    margin-bottom: 10px;
+  }
+  .mp3 {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+    justify-content: space-between; /* Space between the leftmost and rightmost items */
+    margin-bottom: 10px;
   }
   
+  .mp3 > *:first-child {
+    margin-left: 0; /* Optional: Adjust for leftmost element */
+  }
+  
+  .mp3 > *:last-child {
+    margin-right: 0; /* Optional: Adjust for rightmost element */
+  }
   .sound-button:hover {
     background-color: #0056b3;
+  }
+
+  .config-button {
+    width: 100px;
+    height: 100px;
+    margin: 10px;
+    background-color: red;
+
   }
   
