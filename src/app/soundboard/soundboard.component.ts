@@ -20,14 +20,55 @@ export class SoundboardComponent {
 
   private deathSounds: HTMLAudioElement[] = [
     new Audio('assets/sound/death/marioDeathSound.mp3'),
+    new Audio('assets/sound/death/snake.mp3'),
+  ];
+
+  private bigDamage: HTMLAudioElement[] = [
+    new Audio('assets/sound/death/marioDeathSound.mp3'),
+  ];
+  
+  private counterSpell: HTMLAudioElement[] = [
+    new Audio('assets/sound/death/marioDeathSound.mp3'),
+  ];
+  
+  private smallDamage: HTMLAudioElement[] = [
+    new Audio('assets/sound/death/marioDeathSound.mp3'),
+  ];
+  
+  private makeDeal: HTMLAudioElement[] = [
+    new Audio('assets/sound/death/marioDeathSound.mp3'),
+  ];
+  
+  private waiting: HTMLAudioElement[] = [
+    new Audio('assets/sound/death/marioDeathSound.mp3'),
   ];
   
 
+
   // Method to play a random sound
-  playDeathSound() {
-    const randomIndex = Math.floor(Math.random() * this.deathSounds.length); // Pick a random index
-    const selectedSound = this.deathSounds[randomIndex];
-    selectedSound.currentTime = 0; // Reset audio to start
-    selectedSound.play(); // Play the randomly selected sound
+  playSound(soundEffect: string) {
+    let soundArray: HTMLAudioElement[] = [];
+    switch (soundEffect) {
+      case 'death':
+        soundArray = this.deathSounds;
+        break;
+    }
+    // Pick a random sound from the selected array and play it
+    if (soundArray.length > 0) {
+      const randomIndex = Math.floor(Math.random() * soundArray.length);
+      console.log(randomIndex);
+      const selectedSound = soundArray[randomIndex];
+      selectedSound.currentTime = 0; // Reset audio to the start
+      selectedSound
+        .play()
+        .catch((error) => console.error('Error playing audio:', error));
+    } else {
+      console.error(`No sounds available for ${soundEffect}`);
+    }
   }
+
+  stop() {
+
+  }
+
 }
