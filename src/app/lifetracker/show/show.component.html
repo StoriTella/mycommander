@@ -1,0 +1,31 @@
+<!--button mat-flat-button routerLink="/homepage">homepage</button>
+<div class="container">
+    <div class="box">{{listPlayers[0].life}}</div>
+    <div class="box">{{listPlayers[0].life}}</div>
+    <div class="box">{{listPlayers[0].life}}</div>
+    <div class="box">{{listPlayers[0].life}}</div>
+  </div-->
+
+<div class="container">
+    <div class="box" *ngFor="let pcActive of listPlayers; let i = index">
+        <div [ngClass]="{'centered-number-right': i % 2 === 0, 'centered-number-left': i % 2 !== 0}">{{pcActive.life}}
+        </div>
+        <div class="inner-container">
+            <div class="inner-box" *ngFor="let pcDamage of listPlayers; let j = index">
+                <div class="button-container">
+                    <button [ngClass]="{'quick-button-right': i % 2 === 0, 'quick-button-left': i % 2 !== 0}"
+                        (click)="quickClick(pcDamage,pcActive)">{{this.configPlayers[i][j].name}}</button>
+                </div>
+                <!--button [ngClass]="{'config-button-right': i % 2 === 0, 'config-button-left': i % 2 !== 0}"
+                    (click)="changeConfig(pcActive, pcDamage)">Config</button-->
+                <button [ngClass]="{'config-button-right': i % 2 === 0, 'config-button-left': i % 2 !== 0}"
+                    (click)="openConfigWindow(pcActive, pcDamage)">Config</button>
+                <!--mat-select [ngClass]="{'config-button-right': i % 2 === 0, 'config-button-left': i % 2 !== 0}" [(value)]="this.configPlayers[i][j].name">
+                    <mat-option *ngFor="let config of listConfigs" value="{{ config.name }}">
+                        {{ config.name }}
+                    </mat-option>
+                </mat-select-->
+            </div>
+        </div>
+    </div>
+</div>

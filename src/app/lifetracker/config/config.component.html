@@ -1,0 +1,21 @@
+<button mat-flat-button routerLink="/homepage">Back</button>
+<h4>Number of Players</h4>
+<mat-form-field>
+    <mat-label>Number of Players</mat-label>
+    <mat-select [(value)]="numberOfPlayers">
+      <mat-option [value]=1>1</mat-option>
+      <mat-option [value]=2>2</mat-option>
+      <mat-option [value]=3>3</mat-option>
+      <mat-option [value]=4>4</mat-option>
+      <mat-option [value]=5>5</mat-option>
+      <mat-option [value]=6>6</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+<div *ngFor="let item of [].constructor(numberOfPlayers); index as i">
+    <p>
+        Player {{i+1}}
+    </p>
+</div>
+
+<button mat-flat-button routerLink="/lifetracker-show">Confirm</button>
