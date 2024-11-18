@@ -1,2 +1,11 @@
 <button mat-flat-button routerLink="/homepage">Back</button>
-<button class="btn btn-primary" (click)="playSound('death')">Play Death Sound</button>
+<button (click)="stop()">Stop</button>
+<div class="soundboard">
+    <button
+      *ngFor="let sound of soundEffects"
+      class="sound-button"
+      (click)="playSound(sound.key)"
+    >
+      {{ sound.label }}
+    </button>
+  </div>
